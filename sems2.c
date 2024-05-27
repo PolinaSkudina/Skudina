@@ -3,6 +3,7 @@
 #include <sys/sem.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 int main () {
         int semid;
         char pathname[] = "key.ipc";
