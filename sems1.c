@@ -8,18 +8,18 @@ int main () {
 	char pathname[] = "key.ipc";
 	key_t key ;
 	struct sembuf mubuf;
-	if((key=ftok(pathname, 0))<0) {
+	if((key=ftok(pathname, 0)) < 0) {
     		printf("Не удалось сгененрировать ключ ipc\n");
 		exit(-1);
 	}
-	if((semid = semget(key, 1, 0666 | IPC_CREAT)) <0) {
+	if((semid = semget(key, 1, 0666 | IPC_CREAT)) < 0) {
 		printf("Не удалось получить дескриптор массива семафоров\n");
                 exit(-1);
 	}
 	mubuf.sem_op = -1;
 	mubuf.sem_flg = 0;
-	mubuf.sem_num = -0;
-	if(semop(semid, &mubuf, 1) <0) {
+	mubuf.sem_num = 0;
+	if(semop(semid, &mubuf, 1) < 0) {
 		printf("Не удалось выполнить операцию над семафором\n");
 		exit(-1);
 	}
