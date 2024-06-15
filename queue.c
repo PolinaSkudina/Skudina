@@ -31,7 +31,7 @@ int main() {
         len = strlen(mubuf.mtext) +1;
           if((msgsnd(msqid, (struct msgbuf *)&mybuf, len, 0) < 0) {
                 printf("Сообщение не получилось отправить\n");
-                msgctl(msqid, IPC_CREAT, struct msqid_ds *)NULL);
+                msgctl(msqid, IPC_RMID, struct msqid_ds *)NULL);
                 exit(-1);
                 }
         }
@@ -39,7 +39,7 @@ int main() {
         len = 0;
         if((msgsnd(msqid, (struct msgbuf *)&mybuf, len, 0) < 0) {
                 printf("Последнее сообщение не отправлено\n");
-                 msgctl(msqid, IPC_CREAT, struct msqid_ds *)NULL);
+                 msgctl(msqid, IPC_RMID, struct msqid_ds *)NULL);
                 exit(-1);
         }
 
